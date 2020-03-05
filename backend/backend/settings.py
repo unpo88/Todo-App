@@ -40,10 +40,18 @@ INSTALLED_APPS = [
 
     'todo',
     'accounts',
+
     'rest_framework',
+    'knox',
 ]
 
 AUTH_USER_MODEL = 'accounts.User'
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'knox.auth.TokenAuthentication',
+    ),
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
