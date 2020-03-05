@@ -7,8 +7,8 @@ class Todo(models.Model):
     completed = models.BooleanField(default=False)          # 완료 여부
     completed_at = models.DateTimeField(auto_now_add=True)  # 가장 최근 업데이트 시간
     owner = models.ForeignKey(
-        User, related_name="comment",
-        on_delete=models.CASCADE
+        User, related_name="todos",
+        on_delete=models.CASCADE, null=True
     )
     class Meta:
         db_table = 'todo_info'
