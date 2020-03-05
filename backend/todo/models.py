@@ -1,12 +1,15 @@
 from django.db import models
+from accounts.models import User
 
 # Create your models here.
 class Todo(models.Model):
-    name = models.CharField(max_length=100)                 # 소유자
     content = models.TextField(blank=True)                  # TO_DO 내용
     completed = models.BooleanField(default=False)          # 완료 여부
     completed_at = models.DateTimeField(auto_now_add=True)  # 가장 최근 업데이트 시간
-
+    owner = models.ForeignKey(
+        User, related_name="comment",
+        on_delete=models.CASCADE
+    )
     class Meta:
         db_table = 'todo_info'
 
