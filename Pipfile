@@ -10,6 +10,7 @@ django = "*"
 mysqlclient = "*"
 gunicorn = "*"
 dj-static = "*"
+djangorestframework = "*"
 
 [requires]
 python_version = "3.8"
