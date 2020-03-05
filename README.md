@@ -20,3 +20,18 @@
 ### Environment
 
 - [Docker](https://www.docker.com/) : 컨테이너 플랫폼
+
+### Backend End-points
+
+> **Resource modeling**
+> 
+> - 일과(Todo) 리소스 관련 API
+> 
+>   |  HTTP |  Path |  Method |  Permission |  목적 |
+>   | --- | --- | --- | --- | --- |
+>   |**GET** |/todo|LIST| Access Token |모든 Todo 조회|
+>   |**POST** |/todo|CREATE| Access Token |하나의 Todo 생성|
+>   |**GET** |/todo/todo_id|READ| Access Token |하나의 Todo 조회|
+>   |**PUT** |/todo/todo_id|UPDATE| Access Token |하나의 Todo 수정|
+>   |**DELETE** |/todo/todo_id|DELETE| Access Token |하나의 Todo 삭제|
+> 
