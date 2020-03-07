@@ -11,6 +11,8 @@ import {
     REGISTER_FAIL
 } from './types';
 
+import { returnErrors } from './messages';
+
 // CHECK TOKEN & LOAD USER
 export const loader = () => (dispatch, getState) => {
     // User Loading
@@ -23,6 +25,7 @@ export const loader = () => (dispatch, getState) => {
                 payload: res.data
             });
         }).catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.state));
             dispatch({
                 type: AUTH_ERROR
             });
@@ -49,6 +52,7 @@ export const login = (user_id, password) => dispatch => {
                 payload: res.data
             });
         }).catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.state));
             dispatch({
                 type: LOGIN_FAIL
             });
@@ -75,6 +79,7 @@ export const register = ({ user_id, user_name, password }) => dispatch => {
                 payload: res.data
             });
         }).catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.state));
             dispatch({
                 type: REGISTER_FAIL
             });
@@ -88,6 +93,7 @@ export const logout = () => (dispatch, getState) => {
                 type: LOGOUT_SUCCESS
             });
         }).catch(err => {
+            dispatch(returnErrors(err.response.data, err.response.state));
         });
 };
 
