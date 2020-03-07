@@ -4,6 +4,11 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/auth';
 
+import { Form, Input, Button, Checkbox } from 'antd';
+import { UserOutlined, LockOutlined } from '@ant-design/icons';
+
+import '../../../static/frontend/Login.css';
+
 export class Login extends Component {
     state = {
         user_id: "",
@@ -29,11 +34,46 @@ export class Login extends Component {
 
         const { user_id, password } = this.state;
 
+        const onFinish = values => {
+            // e.preventDefault();
+            // this.props.login(this.state.user_id, this.state.password);
+            this.props.login(values.user_id, values.password);
+        };
+
         return (
             <div className="col-md-6 m-auto">
                 <div className="card card-body mt-5">
                     <h2 className="text-center">Login</h2>
-                    <form onSubmit={this.onSubmit}>
+                    <Form
+                        name="normal_login"
+                        className="login-form"
+                        onFinish={onFinish}
+                    >
+                        <Form.Item
+                            name="user_id"
+                            rules={[{ required: true, message: 'Please input your Email!', type: 'email' }]}
+                        >
+                            <Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="Email" />
+                        </Form.Item>
+
+                        <Form.Item
+                            name="password"
+                            rules={[{ required: true, message: 'Please input your Password!' }]}
+                        >
+                            <Input
+                                prefix={<LockOutlined className="site-form-item-icon" />}
+                                type="password"
+                                placeholder="Password"
+                            />
+                        </Form.Item>
+                        <Form.Item>
+                            <Button type="primary" htmlType="submit" className="login-form-button">
+                                Log in
+                        </Button>
+                            Don't have an account? <Link to="/register">Register now!</Link>
+                        </Form.Item>
+                    </Form>
+                    {/* <form onSubmit={this.onSubmit}>
                         <div className="form-group">
                             <label>Email</label>
                             <input
@@ -62,7 +102,7 @@ export class Login extends Component {
                         <p>
                             Don't have an account? <Link to="/register">Register</Link>
                         </p>
-                    </form>
+                    </form> */}
                 </div>
             </div>
         );
