@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_TODOS, DELETE_TODO, ADD_TODO, GET_ERRORS } from './types';
+import { GET_TODOS, DELETE_TODO, ADD_TODO, GET_ERRORS, UPDATE_TODO } from './types';
 import { tokenConfig } from './auth';
 
 import { createMessage, returnErrors } from './messages';
@@ -9,12 +9,25 @@ import { createMessage, returnErrors } from './messages';
 export const getTodos = () => (dispatch, getState) => {
     axios.get("http://localhost:8080/api/todo/", tokenConfig(getState))
         .then(res => {
+            dispatch(createMessage({ getTodos: "Todos Get" }));
             dispatch({
                 type: GET_TODOS,
                 payload: res.data
             });
         }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
 };
+
+// GET TODO
+export const getTodo = (id) => (dispatch, getState) => {
+    axios.get(`http://localhost:8080/api/todo/${id}/`, tokenConfig(getState))
+        .then(res => {
+            dispatch(createMessage({ getTodo: "Todo Get" }));
+            dispatch({
+                type: GET_TODO,
+                payload: res.data
+            });
+        }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
+}
 
 // DELETE TODO
 export const deleteTodo = (id) => (dispatch, getState) => {
@@ -35,6 +48,18 @@ export const addTodo = todo => (dispatch, getState) => {
             dispatch(createMessage({ addTodo: "Todo Added" }));
             dispatch({
                 type: ADD_TODO,
+                payload: res.data
+            });
+        }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));
+}
+
+// UPDATE TODO
+export const updateTodo = (id, completed, content) => (dispatch, getState) => {
+    axios.put(`http://localhost:8080/api/todo/${id}/`, { completed, content }, tokenConfig(getState))
+        .then(res => {
+            dispatch(createMessage({ updateTodo: "Todo Update" }));
+            dispatch({
+                type: UPDATE_TODO,
                 payload: res.data
             });
         }).catch(err => dispatch(returnErrors(err.response.data, err.response.status)));

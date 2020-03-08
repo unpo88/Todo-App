@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 
-import Form from './Form';
+import TodoForm from './TodoForm';
 import Todos from './Todos';
+import TodoModal from './TodoModal';
 
 export class Dashboard extends Component {
     render() {
         return (
             <div>
-                <Form />
-                <Todos />
+                <TodoForm />
             </div>
         )
     }
