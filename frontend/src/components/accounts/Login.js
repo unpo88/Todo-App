@@ -2,37 +2,46 @@ import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { login } from '../../actions/auth';
+import { login, loader } from '../../actions/auth';
 
-import { Form, Input, Button, Checkbox } from 'antd';
+import { Form, Input, Button } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 
 import '../../../static/frontend/Login.css';
 
 export class Login extends Component {
-    state = {
-        user_id: "",
-        password: "",
-    }
+    // state = {
+    //     user_id: "",
+    //     password: "",
+    // }
 
     static propTypes = {
         login: PropTypes.func.isRequired,
         isAuthenticated: PropTypes.bool
     }
 
-    onSubmit = e => {
-        e.preventDefault();
-        this.props.login(this.state.user_id, this.state.password);
-    };
+    // onSubmit = e => {
+    //     e.preventDefault();
+    //     this.props.login(this.state.user_id, this.state.password);
+    // };
 
-    onChange = e => this.setState({ [e.target.name]: e.target.value });
+    // onChange = e => this.setState({ [e.target.name]: e.target.value });
 
     render() {
         if (this.props.isAuthenticated) {
             return <Redirect to="/" />;
         }
 
-        const { user_id, password } = this.state;
+        // const { user_id, password } = this.state;
+
+        const layout = {
+            labelCol: { span: 8 },
+            wrapperCol: { span: 12 },
+        };
+
+        const tailLayout = {
+            wrapperCol: { offset: 8, span: 12 },
+        };
 
         const onFinish = values => {
             // e.preventDefault();
@@ -41,7 +50,7 @@ export class Login extends Component {
         };
 
         return (
-            <div className="col-md-6 m-auto">
+            <div className="col-md-4 m-auto">
                 <div className="card card-body mt-5">
                     <h2 className="text-center">Login</h2>
                     <Form
@@ -113,4 +122,4 @@ const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated
 });
 
-export default connect(mapStateToProps, { login })(Login);
+export default connect(mapStateToProps, { login, loader })(Login);
