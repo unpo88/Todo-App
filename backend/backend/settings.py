@@ -99,6 +99,8 @@ DATABASES = {
             'PASSWORD': 'Rhdxhd12!@#',
             'HOST': 'localhost',
             'PORT': '',
+            # 'HOST': '35.196.80.208',
+            # 'PORT': '3306',
     }
 }
 
