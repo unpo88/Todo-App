@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { GET_TODOS, DELETE_TODO, ADD_TODO, GET_ERRORS, UPDATE_TODO } from './types';
+import { GET_TODOS, DELETE_TODO, ADD_TODO, UPDATE_TODO } from './types';
 import { tokenConfig } from './auth';
 
 import { createMessage, returnErrors } from './messages';
