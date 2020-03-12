@@ -17,6 +17,7 @@ import { returnErrors } from './messages';
 export const loader = () => (dispatch, getState) => {
     // User Loading
     dispatch({ type: USER_LOADING });
+
     axios.get('http://localhost:8080/api/auth/user', tokenConfig(getState))
         .then(res => {
             dispatch({
@@ -84,6 +85,7 @@ export const register = (user_id, user_name, password) => dispatch => {
         });
 };
 
+// LOGOUT
 export const logout = () => (dispatch, getState) => {
     axios.post("http://localhost:8080/api/auth/logout", null, tokenConfig(getState))
         .then(res => {

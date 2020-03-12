@@ -7,7 +7,6 @@ import { Checkbox, Layout, Input, Button, List, Form, Tag } from 'antd';
 import { DeleteOutlined, PlusCircleOutlined, TagsOutlined, CheckCircleOutlined, EditOutlined } from '@ant-design/icons';
 
 import '../../../static/frontend/TodoForm.css';
-import { createMessage } from '../../actions/messages';
 
 import Modal from './TodoModal';
 
@@ -37,8 +36,6 @@ export class TodoForm extends Component {
     }
 
     onChange = e => this.setState({ [e.target.name]: e.target.value });
-
-    onChangeCheck = e => this.setState({ [e.target.name]: e.target.checked });
 
     addTodo = values => {
         const { content } = this.state;
@@ -142,37 +139,6 @@ export class TodoForm extends Component {
                     </Form>
                 </Content>
             </Layout>
-            // <div className="card card-body mt-4 mb-4">
-            //     <h2>Add Todo</h2>
-            //     <form onSubmit={this.onSubmit}>
-            //         <div className="form-group">
-            //             <label>Content</label>
-            //             <input
-            //                 className="form-control"
-            //                 type="text"
-            //                 name="content"
-            //                 onChange={this.onChange}
-            //                 value={content}
-            //                 checked={content.value}
-            //             />
-            //         </div>
-            //         <div className="form-group">
-            //             <label>Completed</label>
-            //             <input
-            //                 className="form-control"
-            //                 type="checkbox"
-            //                 name="completed"
-            //                 onChange={this.onChangeCheck}
-            //                 value={completed}
-            //             />
-            //         </div>
-            //         <div className="form-group">
-            //             <button type="submit" className="btn btn-primary">
-            //                 Submit
-            //             </button>
-            //         </div>
-            //     </form>
-            // </div>
         )
     }
 }
