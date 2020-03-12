@@ -42,14 +42,21 @@
   font-size: 22px;
   font-weight: bold;
   cursor: pointer;
-  position: absolute;
-  right: 24px;
+  position: static;
 }
 
 .App-todo-edit {
   font-size: 22px;
   font-weight: bold;
   cursor: pointer;
+  position: static;
+}
+
+.App-todo-checkbox {
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  position: static;
   right: 24px;
 }
 

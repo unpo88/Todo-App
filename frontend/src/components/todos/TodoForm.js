@@ -19,7 +19,8 @@ export class TodoForm extends Component {
             content: '',
             completed: '',
             completed_at: ''
-        }
+        },
+        showModal: false
     };
 
     static propTypes = {
@@ -45,26 +46,28 @@ export class TodoForm extends Component {
         this.props.addTodo(todo);
         this.setState({
             'content': ''
-        })
+        });
     };
 
-    completedTodo = async (id, completed, content) => {
-        await this.props.updateTodo(id, !completed, content);
-        this.props.getTodos();
+    completedTodo = (id, completed, content) => {
+        this.props.updateTodo(id, !completed, content).then(() => {
+            this.props.getTodos();
+        })
     }
 
     toggle = () => {
-        this.setState({ modal: !this.state.modal });
+        this.setState({ showModal: !this.state.showModal });
     };
 
     editItem = todo => {
-        this.setState({ todo: todo, modal: !this.state.modal });
+        this.setState({ todo: todo, showModal: !this.state.showModal });
     }
 
-    handleSubmit = async (todo) => {
+    handleSubmit = (todo) => {
         this.toggle();
-        await this.props.updateTodo(todo.id, todo.completed, todo.content);
-        this.props.getTodos();
+        this.props.updateTodo(todo.id, todo.completed, todo.content).then(() => {
+            this.props.getTodos();
+        });
     };
 
     render() {
@@ -112,11 +115,12 @@ export class TodoForm extends Component {
                                     <Checkbox
                                         defaultChecked={todo.completed}
                                         onChange={() => this.completedTodo(todo.id, todo.completed, todo.content)}
+                                        className="App-todo-checkbox"
                                     />
                                     <Tag color={todo.completed ? "green" : "volcano"} className="todo-tag">
                                         {todo.completed ? <CheckCircleOutlined /> : "-"}
                                     </Tag>
-                                    {todo.content}
+                                    {todo.completed ? <div><s>{todo.content}</s></div> : <div>{todo.content}</div>}
                                     <EditOutlined
                                         onClick={() => this.editItem(todo)}
                                         className="App-todo-edit"
@@ -128,7 +132,7 @@ export class TodoForm extends Component {
                                 </List.Item>
                             )}
                         />
-                        {this.state.modal ? (
+                        {this.state.showModal ? (
                             <Modal
                                 todo={this.state.todo}
                                 toggle={this.toggle}
