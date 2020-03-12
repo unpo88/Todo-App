@@ -55,7 +55,7 @@ export const addTodo = todo => (dispatch, getState) => {
 
 // UPDATE TODO
 export const updateTodo = (id, completed, content) => (dispatch, getState) => {
-    axios.put(`http://localhost:8080/api/todo/${id}/`, { completed, content }, tokenConfig(getState))
+    return axios.put(`http://localhost:8080/api/todo/${id}/`, { completed, content }, tokenConfig(getState))
         .then(res => {
             dispatch(createMessage({ updateTodo: "Todo Update" }));
             dispatch({
