@@ -32,10 +32,10 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    user_id = models.EmailField(max_length=255, unique=True)
-    user_name = models.CharField(max_length=50, default='')
-    created_at = models.DateTimeField(auto_now_add=True)
-    is_admin = models.BooleanField(default=False)
+    user_id = models.EmailField(max_length=255, unique=True)    # ID(Email 주소 형태)
+    user_name = models.CharField(max_length=50, default='')     # 이름
+    created_at = models.DateTimeField(auto_now_add=True)        # 가입 일시
+    is_admin = models.BooleanField(default=False)               # admin 권한
 
     objects = UserManager()
 

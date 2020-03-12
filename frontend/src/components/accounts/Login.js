@@ -10,42 +10,17 @@ import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import '../../../static/frontend/Login.css';
 
 export class Login extends Component {
-    // state = {
-    //     user_id: "",
-    //     password: "",
-    // }
-
     static propTypes = {
         login: PropTypes.func.isRequired,
         isAuthenticated: PropTypes.bool
     }
-
-    // onSubmit = e => {
-    //     e.preventDefault();
-    //     this.props.login(this.state.user_id, this.state.password);
-    // };
-
-    // onChange = e => this.setState({ [e.target.name]: e.target.value });
 
     render() {
         if (this.props.isAuthenticated) {
             return <Redirect to="/" />;
         }
 
-        // const { user_id, password } = this.state;
-
-        const layout = {
-            labelCol: { span: 8 },
-            wrapperCol: { span: 12 },
-        };
-
-        const tailLayout = {
-            wrapperCol: { offset: 8, span: 12 },
-        };
-
         const onFinish = values => {
-            // e.preventDefault();
-            // this.props.login(this.state.user_id, this.state.password);
             this.props.login(values.user_id, values.password);
         };
 
@@ -82,36 +57,6 @@ export class Login extends Component {
                             Don't have an account? <Link to="/register">Register now!</Link>
                         </Form.Item>
                     </Form>
-                    {/* <form onSubmit={this.onSubmit}>
-                        <div className="form-group">
-                            <label>Email</label>
-                            <input
-                                type="email"
-                                className="form-control"
-                                name="user_id"
-                                onChange={this.onChange}
-                                value={user_id}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <label>Password</label>
-                            <input
-                                type="password"
-                                className="form-control"
-                                name="password"
-                                onChange={this.onChange}
-                                value={password}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <button type="submit" className="btn btn-primary">
-                                Login
-                        </button>
-                        </div>
-                        <p>
-                            Don't have an account? <Link to="/register">Register</Link>
-                        </p>
-                    </form> */}
                 </div>
             </div>
         );
