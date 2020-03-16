@@ -1,0 +1,51 @@
+version: '3.1'
+services:
+  nginx:
+    environment:
+      TZ: "Asia/Seoul"
+    image: nginx:latest
+    ports:
+      - "80:80"
+      - "8000:8000"
+    command: >
+      bash -c "sleep 10 && nginx -g \"daemon off;\""
+    volumes:
+      - configs-nginx:/etc/nginx/conf.d
+      - static_files:/static
+      - frontend:/frontend
+    depends_on: # 서비스 간의 종속성 표현
+      - backend
+  db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    container_name: todo-app-db
+    environment:
+      TZ: "Asia/Seoul"
+      MYSQL_ROOT_PASSWORD: Rhdxhd12!@#
+      MYSQL_DATABASE: todo-app
+    volumes:
+      - django_db:/var/lib/mysql
+  backend:
+    environment:
+      TZ: "Asia/Seoul"
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - static_files:/backend/backend/staticfiles
+      - configs-django:/todo-app-configs/django
+      - configs-nginx:/todo-app-configs/nginx
+      - frontend:/frontend
+    ports:
+      - "8080:8080"
+    environment:
+      - DJANGO_SETTINGS_MODULE=backend.settings
+    links:
+      - db
+volumes:
+  django_db:
+  configs-nginx:
+  configs-django:
+  static_files:
+  frontend:
