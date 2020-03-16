@@ -65,7 +65,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-CORS_ORIGIN_WHITELIST = ['http://localhost:3000']
+CORS_ORIGIN_WHITELIST = ['http://localhost']
 
 ROOT_URLCONF = 'backend.urls'
 
@@ -95,12 +95,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'todo_app',
-            'USER': 'whatsup',
+            'USER': 'root',
+            'NAME': 'todo-app',
             'PASSWORD': 'Rhdxhd12!@#',
-            'HOST': 'localhost',
-            'PORT': '',
-            # 'HOST': '35.196.80.208',
-            # 'PORT': '3306',
+            'HOST': 'db',
     }
 }
 
