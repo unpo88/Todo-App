@@ -35,3 +35,13 @@
 >   |**PUT** |/todo/todo_id|UPDATE| Access Token |하나의 Todo 수정|
 >   |**DELETE** |/todo/todo_id|DELETE| Access Token |하나의 Todo 삭제|
 > 
+>
+
+### Running with Docker
+> **Build & Run App**
+> ```sh
+>     docker-compose -f docker-compose.yml up --build
+> ```
+> **Access the WEB at http://localhost:80**
+> 
+> **Access the API at http://localhost:8000**
