@@ -44,4 +44,4 @@
 > ```
 > **Access the WEB at http://localhost:80**
 > 
-> **Access the API at http://localhost:8000**
+> **Access the API at http://localhost:8080**
