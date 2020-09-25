@@ -9,7 +9,7 @@ RUN apt-get -y upgrade
 RUN apt-get -y install curl gnupg
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
-RUN apt-get install -y python3 python3-pip python-pip python3-dev build-essential libmysqlclient-dev
+RUN apt-get install -y python3 python3-pip python3-dev build-essential libmysqlclient-dev
 COPY ./requirements.txt /requirements.txt
 RUN pip3 install --upgrade pip
 RUN pip install -r /requirements.txt
