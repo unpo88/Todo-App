@@ -95,11 +95,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'todo_app',
-            'USER': 'root',
-            'NAME': 'todo-app',
-            'PASSWORD': 'rhdxhd12!!',
-            'HOST': 'dbinstancedemo.ccs2oa6jppk1.ap-northeast-2.rds.amazonaws.com',
-            'PORT': '3306'
+        'USER': 'root',
+        'PASSWORD': 'rhdxhd12!!',
+        'HOST': 'dbinstancedemo.ccs2oa6jppk1.ap-northeast-2.rds.amazonaws.com',
+        'PORT': '3306'
     }
 }
 
