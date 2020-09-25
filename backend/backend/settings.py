@@ -99,7 +99,7 @@ DATABASES = {
             'NAME': 'todo-app',
             'PASSWORD': 'rhdxhd12!!',
             'HOST': 'dbinstancedemo.ccs2oa6jppk1.ap-northeast-2.rds.amazonaws.com',
-            'PORT': '3306
+            'PORT': '3306'
     }
 }
 
