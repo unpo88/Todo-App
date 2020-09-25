@@ -7,7 +7,7 @@ ENV PYTHONUNBUFFERED 1
 RUN apt-get -y update
 RUN apt-get -y upgrade
 RUN apt-get -y install curl gnupg
-RUN curl -sL https://rpm.nodesource.com/setup_14.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_14.x | sudo -E bash -
 RUN apt-get -y install nodejs
 RUN apt-get install -y python3 python3-pip python-pip python3-dev build-essential libmysqlclient-dev
 COPY ./requirements.txt /requirements.txt
