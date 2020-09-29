@@ -94,7 +94,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'todo_app',
+        'NAME': 'test',
         'USER': 'root',
         'PASSWORD': 'rhdxhd12!!',
         'HOST': 'dbinstancedemo.ccs2oa6jppk1.ap-northeast-2.rds.amazonaws.com',
